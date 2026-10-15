@@ -9,6 +9,7 @@ All files live at the top level of the repo (no folders), so uploading is simple
 | `index.html` | The page structure and wording |
 | `styles.css` | Colors and layout (black, gold and white, from the logo) |
 | `data.js` | Programs, payment links, alumni, events, coaches, contact info |
+| `favicon.ico`, `favicon-32x32.png`, `apple-touch-icon.png`, `icon-192.png` | The small "APP" icon for browser tabs, bookmarks and phone home screens |
 | `main.js` | Makes the page work (form, menu, filters). You should not need to edit this |
 | `logo.png`, `logo-header.png` | The club logos: sun-and-mountain logo (hero and footer) and striped wordmark (header) |
 
