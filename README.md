@@ -1,64 +1,59 @@
-# App Volleyball Club website
+# Appalachian Volleyball Club website
 
-A fast, static website for appvolleyballclub.com. No build step and no server. It is plain HTML, CSS and JavaScript, so it can be hosted free on GitHub Pages.
+A fast, static website. No build step and no server. It is plain HTML, CSS and JavaScript, hosted free on GitHub Pages.
 
-## Put it online (GitHub Pages)
+All files live at the top level of the repo (no folders), so uploading is simple.
 
-1. Upload everything in this folder to the root of the `jpryor83/Appvolleyballclub` repo (drag and drop works on github.com, or use `git push`).
-2. In the repo, open **Settings > Pages**. Under "Build and deployment" choose **Deploy from a branch**, branch `main`, folder `/ (root)`.
-3. Under "Custom domain" enter `appvolleyballclub.com` (the `CNAME` file already contains it). Tick **Enforce HTTPS** once it is available.
-4. At your domain registrar, add these DNS records:
-   - Four **A** records for `@` pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - One **CNAME** record for `www` pointing to `jpryor83.github.io`
-
-   DNS can take from a few minutes to a day to update. GitHub's current instructions: docs.github.com/pages (search "custom domain").
-
-## Add the logo and photos
-
-| File | What it is |
+| File | What it does |
 | --- | --- |
-| `assets/logo.png` | The club logo (square or wide, transparent background works best) |
-| `assets/kim-pryor.jpg` | Photo of Kim for the coaches section |
-| `assets/photos/team-1.jpg` to `team-6.jpg` | Gallery photos (or rename and edit the list in `js/data.js`) |
-| `assets/alumni/` | Headshots of players now playing in college |
+| `index.html` | The page structure and wording |
+| `styles.css` | Colors and layout (black, gold and white, from the logo) |
+| `data.js` | Programs, payment links, alumni, events, coaches, contact info |
+| `main.js` | Makes the page work (form, menu, filters). You should not need to edit this |
+| `logo.png`, `logo-mark.png` | The club logo (full, and just the volleyball and mountain) |
 
-Anything missing is skipped automatically. The gallery section stays hidden until at least one photo loads, and players without photos show their initials.
+## Updating the site on GitHub
 
-Use photos the club owns or has permission to use, and get parent or player permission before posting photos of minors by name.
+To replace a file: open the repo, click **Add file > Upload files**, drag in a file with the same name, and click **Commit changes**. The site updates in a minute or two. Hard refresh with Ctrl+Shift+R (Cmd+Shift+R on a Mac) to see changes.
 
-## Everything you will edit is in `js/data.js`
+## Add photos
 
-- **Alumni ("Next level")**: add one entry per player. The page counts them, sorts by class year and builds division filters automatically. Delete the three sample entries.
-- **Events**: add dates as `"YYYY-MM-DD"`. Past events hide themselves.
+Upload photo files to the repo (same place as `index.html`), then list their file names in `data.js`.
+
+- Coach photo: `kim-pryor.jpg`
+- Gallery: `team-1.jpg` to `team-6.jpg` (or change the names in `data.js`)
+- College players: upload a headshot and put its file name in that player's `photo` line
+
+Missing photos are skipped, so nothing looks broken. Get permission before posting photos of minors by name.
+
+## Everything you will edit is in `data.js`
+
+- **Alumni ("Next level")**: one entry per player who went on to college volleyball. The page counts them, sorts by class year and builds division filters. Delete the three sample entries.
+- **Events**: dates as `"YYYY-MM-DD"`. Past events hide themselves.
 - **Payments**: paste a payment link into each `url`.
-- **Programs, coaches, contact info**: all in the same file.
-
-Colors are at the top of `css/styles.css`. Change the values under `:root` to match the logo.
+- **Programs, coaches, contact info**: same file.
 
 ## Turn on payments
 
-The site does not handle card numbers itself. Each "Pay now" button opens a hosted checkout page, which is the safest and simplest setup.
+The site never handles card numbers. Each "Pay now" button opens a hosted checkout page.
 
-1. Create a free Stripe account (stripe.com). Square and PayPal also offer payment links.
-2. In Stripe, create a **Payment Link** for each item (tryout fee, dues, camp, tournament). Turn on "let customers adjust quantity" for camps if useful.
-3. Paste each link into `payments` in `js/data.js`.
-
-Also check with an accountant about taxes and whether the club should be set up as a business or nonprofit before collecting money.
+1. Create a Stripe account (stripe.com). Square and PayPal also offer payment links.
+2. Create a Payment Link for each item (tryout fee, dues, camp, tournament).
+3. Paste each link into `payments` in `data.js`.
 
 ## Turn on the sign-up form
 
-1. Create a free form at formspree.io and copy its URL (it looks like `https://formspree.io/f/abcdwxyz`).
-2. Paste it into `formEndpoint` in `js/data.js`.
+1. Create a free form at formspree.io and copy its URL.
+2. Paste it into `formEndpoint` in `data.js`.
 
-Responses then arrive by email. Until you do this, the form opens an email addressed to the club instead.
+Until then, the form opens an email to the club address instead.
+
+## Connect appvolleyballclub.com (when ready to launch)
+
+1. In the repo go to **Settings > Pages**, enter `appvolleyballclub.com` under **Custom domain**, and save. GitHub creates the `CNAME` file for you.
+2. At the domain registrar, add four **A** records for `@` pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and a **CNAME** record for `www` pointing to `jpryor83.github.io`.
+3. Once GitHub's DNS check passes, tick **Enforce HTTPS**.
 
 ## Review all copy
 
-The wording was drafted from public information about the club and Kim's coaching background. Kim should read every line and confirm ages, programs, locations, pricing and bio details before launch.
-
-## Ideas for later
-
-- A real roster and schedule page for each team
-- A sponsor section for local businesses
-- Online waivers and medical forms
-- A newsletter sign-up
+The wording was drafted from public information. Kim should confirm ages, programs, locations, pricing and her bio before launch.
