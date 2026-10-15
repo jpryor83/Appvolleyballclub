@@ -22,7 +22,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
 body { margin: 0; font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -56,9 +56,10 @@ p { margin: 0 0 1rem; }
 
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 50; background: #000; border-bottom: 1px solid #2c2b28; }
-.bar { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 1rem; }
+.bar { display: flex; align-items: center; justify-content: space-between; min-height: 84px; gap: 1rem; }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
-.brand-logo { height: 48px; width: auto; }
+.brand-logo { height: 60px; width: auto; }
+.brand.has-logo .brand-name { display: none; }
 .brand-name { font-family: var(--display); font-stretch: 118%; font-weight: 800; font-size: 1.05rem; line-height: 1.05; color: var(--white); }
 .nav { display: flex; align-items: center; gap: 1.4rem; }
 .nav a:not(.btn) { text-decoration: none; font-weight: 600; font-size: .98rem; color: var(--white); padding: .3rem 0; border-bottom: 2px solid transparent; }
@@ -67,12 +68,11 @@ p { margin: 0 0 1rem; }
 
 /* Hero */
 .hero { position: relative; overflow: hidden; background: linear-gradient(#000 0%, #000 50%, #1c1606 100%); min-height: min(86vh, 760px); display: flex; align-items: flex-start; }
-.hero-copy { position: relative; z-index: 3; padding-top: clamp(3rem, 9vh, 6rem); padding-bottom: clamp(11rem, 21vw, 17rem); max-width: 1120px; }
+.hero-inner { position: relative; z-index: 3; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding-top: clamp(3rem, 8vh, 5.5rem); padding-bottom: clamp(11rem, 21vw, 17rem); }
+.hero-logo { width: 100%; height: auto; animation: rise 1.6s cubic-bezier(.2, .7, .2, 1) both; }
 .hero h1 { color: var(--white); max-width: 13ch; }
 .lead { font-size: clamp(1.1rem, 2vw, 1.35rem); max-width: 34rem; margin: 1.5rem 0 2rem; color: #ece8da; }
 .actions { display: flex; flex-wrap: wrap; gap: .8rem; }
-.hero-ball { position: absolute; z-index: 1; width: clamp(180px, 28vw, 380px); right: clamp(1rem, 9vw, 9rem); bottom: clamp(4.5rem, 11vw, 9rem); animation: rise 1.8s cubic-bezier(.2, .7, .2, 1) both; }
-.hero-ball svg { width: 100%; height: auto; }
 .ridges { position: absolute; z-index: 2; left: 0; bottom: -1px; width: 100%; height: clamp(170px, 28vw, 380px); }
 @keyframes rise { from { transform: translateY(90px); opacity: 0; } to { transform: none; opacity: 1; } }
 
@@ -198,7 +198,7 @@ details p { margin: .8rem 0 0; color: var(--muted); max-width: 40rem; }
 /* Responsive */
 @media (max-width: 880px) {
   .nav-toggle { display: block; }
-  .nav { display: none; position: absolute; top: 76px; left: 0; right: 0; background: #000; flex-direction: column; align-items: flex-start; gap: 0; padding: .6rem 1.25rem 1.2rem; border-bottom: 1px solid #2c2b28; }
+  .nav { display: none; position: absolute; top: 84px; left: 0; right: 0; background: #000; flex-direction: column; align-items: flex-start; gap: 0; padding: .6rem 1.25rem 1.2rem; border-bottom: 1px solid #2c2b28; }
   .nav.open { display: flex; }
   .nav a:not(.btn) { padding: .8rem 0; width: 100%; border-bottom: 1px solid #2c2b28; }
   .nav .btn { margin-top: .9rem; }
@@ -207,18 +207,17 @@ details p { margin: .8rem 0 0; color: var(--muted); max-width: 40rem; }
   .coach-photo { max-width: 280px; }
   .programs { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
-  .hero-copy { padding-bottom: 14rem; }
+  .hero-inner { grid-template-columns: 1fr; padding-bottom: 14rem; padding-top: 2rem; }
+  .hero-logo { order: -1; width: min(260px, 70%); }
 }
 @media (max-width: 560px) {
   .grid2 { grid-template-columns: 1fr; }
   .brand-name { font-size: .8rem; max-width: 7.5rem; }
-  .brand-logo { height: 40px; }
+  .brand-logo { height: 48px; }
   .events li { grid-template-columns: 64px 1fr; gap: .9rem; }
-  .hero-ball { width: 150px; right: -1rem; bottom: 2.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-ball { animation: none; }
   .btn { transition: none; }
 }

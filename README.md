@@ -10,7 +10,7 @@ All files live at the top level of the repo (no folders), so uploading is simple
 | `styles.css` | Colors and layout (black, gold and white, from the logo) |
 | `data.js` | Programs, payment links, alumni, events, coaches, contact info |
 | `main.js` | Makes the page work (form, menu, filters). You should not need to edit this |
-| `logo.png`, `logo-mark.png` | The club logo (full, and just the volleyball and mountain) |
+| `logo.png`, `logo-header.png` | The club logos: sun-and-mountain logo (hero and footer) and striped wordmark (header) |
 
 ## Updating the site on GitHub
 
